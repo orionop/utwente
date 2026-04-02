@@ -27,14 +27,17 @@ source venv/bin/activate
 pip install pillow numpy
 ```
 
-## 6. Run pipeline on a bag folder
+## 6. Copy bag data manually (gitignored)
 ```bash
-python3 unbag_pipeline.py --path /path/to/bag_folder
+cp -r /path/to/source/lfdws_trial_002 ~/Desktop/utwente/lfdws_trial_002
 ```
 
-Replace `/path/to/bag_folder` with the folder containing the `.mcap` file (e.g. `lfdws_trial_002/`).
+## 7. Run pipeline
+```bash
+python3 unbag_pipeline.py --path ~/Desktop/utwente/lfdws_trial_002
+```
 
-## 7. Output
+## 8. Output
 - Per-topic CSVs written to the bag folder
 - Combined merged CSV written to the bag folder
 - Images (if any image topics) saved as PNGs

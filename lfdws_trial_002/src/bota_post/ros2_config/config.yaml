@@ -1,0 +1,10 @@
+bota_post:
+  ros__parameters:
+    topic_pose: "/NS_1/franka_robot_state_broadcaster/current_pose"
+    topic_wrench: "/bota_driver_node/wrench"
+    mass: 0.755
+    com_position: [0.0, 0.0, 0.0375]
+    inertia_tensor: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    wrench_offset: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    is_tared: false
+    axis_gravity: "-z"

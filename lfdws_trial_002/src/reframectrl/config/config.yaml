@@ -1,0 +1,66 @@
+enable:
+  contact_awareness: 1
+  online_haptic_generalization: 1
+  reactive_compliance: 0
+  reframectrl: 1
+  reproduction: 1
+  wrench_extrapolation: 1
+extrapolation:
+  factor_speed: 0.1
+  slice:
+  - 0.7
+  - 0.9
+  - 1
+gains:
+  displacement_der: 45
+  displacement_int: 400
+  displacement_prop: 1200
+  force_int: 0.2
+  force_prop: 0.2
+  moment_int: 6.2
+  moment_prop: 0.2
+  orientation_der: 0.75
+  orientation_int: 8.0
+  orientation_prop: 25.0
+gripper:
+  grasp_epsilon: 1.0
+  grasp_force: 1000.0
+  grasp_speed: 0.05
+  grasp_width: 0.0
+  open_speed: 0.05
+  open_width: 0.04
+  velocity_threshold: 0.002
+  wait: 2.5
+input:
+  path: /lfdws_trial_002/lfdws_trial_002/lfdws_trial_002.pickle
+monitor_thresholds:
+  angular_velocity: 0.2
+  force: 5.0
+  linear_velocity: 0.02
+  moment: 0.3
+sample_times:
+  control: 0.01
+  print: 100.1
+tolerance:
+  displacement: 0.004
+  force: 0.1
+  moment: 0.05
+  multiplier_contact: 20
+  multiplier_progress: 5
+  multiplier_zone: 7
+  orientation: 0.03
+wrench_clip:
+  force: 40.0
+  moment: 4.0
+  time_rise: 1.0
+wrench_sensor:
+  force_difference_orthogonal: 3.2
+  moment_difference_orthogonal: 0.09
+  offset_manual:
+  - 0.3797
+  - 0.2636
+  - -0.0463
+  - 6.2985
+  - 33.8433
+  - -18.4216
+  tare_at_start: true

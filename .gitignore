@@ -4,7 +4,6 @@
 *.bag
 venv/
 test_output/
-lfdws_trial_002/
 __pycache__/
 *.pyc
 *.csv

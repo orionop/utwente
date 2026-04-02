@@ -1,0 +1,7 @@
+reframectrl_node:
+  ros__parameters:
+      path_config: "./src/reframectrl/config/config.yaml" 
+      topic_pose: "/NS_1/franka_robot_state_broadcaster/current_pose"
+      topic_wrench: "/bota_post/wrench_body_compensated"
+      action_gripper_grasp: "/NS_1/franka_gripper/grasp"
+      action_gripper_move: "/NS_1/franka_gripper/move"

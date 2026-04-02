@@ -1,0 +1,8 @@
+temp_bota_driver: 
+  ros__parameters:
+    node_name: "bota_driver_node"
+    
+bota_driver_node:
+  ros__parameters:
+    config_file: "./src/bota_driver/config/ethercat_gen0.json"
+    output_rate: 500.0

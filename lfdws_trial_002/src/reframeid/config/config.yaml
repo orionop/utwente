@@ -1,0 +1,74 @@
+identification:
+  bound_angles: 3.14
+  bound_origin: 10.25
+  bound_origin_combined_ground_offset:
+  - -0.5
+  - 0
+  - 0
+  frame_types_combined:
+  - BB
+  - GB
+  - GG
+  - BG
+  frame_types_rotation:
+  - G
+  - B
+  frame_types_translation:
+  - BB
+  - GB
+  - GG
+  - BG
+  init_angles:
+  - 0
+  - 0
+  - 0
+  init_origin:
+  - 0
+  - 0
+  - 0
+  init_random: false
+  max_iter: 10
+  method: power
+  norm_axes: prod
+  norm_time: 2
+input:
+  data_identifiers:
+    force_x: /bota_post/wrench_body_compensated/wrench/force/x
+    force_y: /bota_post/wrench_body_compensated/wrench/force/y
+    force_z: /bota_post/wrench_body_compensated/wrench/force/z
+    gripper_x: /NS_1/franka_gripper/joint_states/fr3_finger_joint1/position
+    moment_x: /bota_post/wrench_body_compensated/wrench/torque/x
+    moment_y: /bota_post/wrench_body_compensated/wrench/torque/y
+    moment_z: /bota_post/wrench_body_compensated/wrench/torque/z
+    rotation_w: /NS_1/franka_robot_state_broadcaster/current_pose/pose/orientation/w
+    rotation_x: /NS_1/franka_robot_state_broadcaster/current_pose/pose/orientation/x
+    rotation_y: /NS_1/franka_robot_state_broadcaster/current_pose/pose/orientation/y
+    rotation_z: /NS_1/franka_robot_state_broadcaster/current_pose/pose/orientation/z
+    time: //bag_write_stamp
+    translation_x: /NS_1/franka_robot_state_broadcaster/current_pose/pose/position/x
+    translation_y: /NS_1/franka_robot_state_broadcaster/current_pose/pose/position/y
+    translation_z: /NS_1/franka_robot_state_broadcaster/current_pose/pose/position/z
+  path: /lfdws_trial_002/lfdws_trial_002/lfdws_trial_002.csv
+  rotation_format: quaternions
+output:
+  path: ''
+  visualize: false
+preprocessing:
+  desired_sample_time: 0.01
+segmentation_classification:
+  dead_time: 0.3
+  direction: bilateral
+  frame_offset: 0.2
+  gripper_dead_time: 2
+  gripper_velocity_threshold: 0.004
+  norm_time: 2
+  thresholds:
+    angular_velocity: 0.2
+    force: 5
+    linear_velocity: 0.02
+    moment: 0.3
+  used_signals:
+  - false
+  - true
+  - true
+  - false

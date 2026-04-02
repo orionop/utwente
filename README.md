@@ -8,7 +8,7 @@ sudo apt install ros-humble-rosbag2-storage-mcap -y
 ## 2. Clone repo
 ```bash
 git clone https://github.com/orionop/utwente.git
-cd utwente
+cd Desktop/anurag_ws/utwente-main
 ```
 
 ## 3. Source ROS2
@@ -27,22 +27,16 @@ source venv/bin/activate
 pip install pillow numpy
 ```
 
-## 6. Copy bag data manually (gitignored)
+## 6. Run pipeline
 ```bash
-cp -r /path/to/source/lfdws_trial_002 ~/Desktop/utwente/lfdws_trial_002
+python3 unbag_pipeline.py --path ~/Desktop/Desktop/anurag_ws/utwente-main/lfdws_trial_002/lfdws_trial_002
 ```
 
-## 7. Run pipeline
-```bash
-python3 unbag_pipeline.py --path ~/Desktop/utwente/lfdws_trial_002
-```
-
-## 8. Output
+## 7. Output
 - Per-topic CSVs written to the bag folder
 - Combined merged CSV written to the bag folder
 - Images (if any image topics) saved as PNGs
 
 ## Notes
 - Every new terminal session: re-run steps 3 and 4 before running the script
-- Bag data files (`.mcap`, `.pickle`, `.csv`) are gitignored — copy them manually to the bag folder
 - Deactivate venv: `deactivate`

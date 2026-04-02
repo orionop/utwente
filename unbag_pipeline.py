@@ -23,6 +23,7 @@ import argparse
 import os
 import io
 import csv
+import json
 import numpy as np
 from PIL import Image
 from rosbag2_py import SequentialReader, StorageOptions, ConverterOptions
@@ -196,6 +197,13 @@ def extract_bag(bag_path, output_dir):
 
     del reader
 
+    # Save topic name → csv filename mapping for merge step
+    topics_map = {csv_path: topic_name for topic_name, csv_path in
+                  zip(writers.keys(), csv_files)}
+    map_path = os.path.join(output_dir, "topics_map.json")
+    with open(map_path, "w") as f:
+        json.dump(topics_map, f, indent=2)
+
     print(f"\nExtracted {len(csv_files)} per-topic CSVs to {output_dir}")
     return csv_files
 
@@ -214,6 +222,15 @@ def merge_csvs(output_dir, csv_files, output_filename=None):
         print("No CSV files to merge.")
         return
 
+    # Load topic name → csv path mapping written during extract
+    map_path = os.path.join(output_dir, "topics_map.json")
+    topics_map = {}
+    if os.path.exists(map_path):
+        with open(map_path) as f:
+            topics_map = json.load(f)
+    # Invert: csv_path → topic_name
+    csv_to_topic = {v: k for k, v in topics_map.items()}
+
     # Collect all rows with topic-prefixed headers
     all_rows = []
     all_headers = set()
@@ -222,9 +239,11 @@ def merge_csvs(output_dir, csv_files, output_filename=None):
         if not os.path.exists(csv_path):
             continue
 
-        # Derive topic name from filename
-        basename = os.path.splitext(os.path.basename(csv_path))[0]
-        topic_prefix = "/" + basename.replace("_", "/")
+        # Use original topic name if available, else fall back to filename
+        topic_prefix = csv_to_topic.get(csv_path, None)
+        if topic_prefix is None:
+            basename = os.path.splitext(os.path.basename(csv_path))[0]
+            topic_prefix = "/" + basename
 
         with open(csv_path, "r", newline="") as f:
             reader = csv.DictReader(f)

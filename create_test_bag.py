@@ -11,6 +11,7 @@ Run on Lab PC (needs ROS 2 Jazzy):
 
 import os
 import io
+import shutil
 import numpy as np
 from PIL import Image as PILImage
 
@@ -94,6 +95,8 @@ def create_compressed_image_msg(img_array, timestamp_ns, frame_id="camera_compre
 
 def main():
     bag_path = os.path.join(OUTPUT_DIR, BAG_NAME)
+    if os.path.exists(bag_path):
+        shutil.rmtree(bag_path)
     os.makedirs(bag_path, exist_ok=True)
 
     # Writer setup

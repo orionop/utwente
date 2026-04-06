@@ -2,8 +2,7 @@
 
 These instructions will guide you through running the data extraction pipeline. It extracts data from ROS 2 bag files (MCAP format) into per-topic CSV files, saves images as PNG files, and then merges everything into a single combined CSV file based on writing timestamps.
 
-The pipeline is tested and guaranteed to work on **Ubuntu 24.04** with **ROS 2 Jazzy**.
-
+The pipeline is tested and guaranteed to work on both **ROS 2 Humble (Ubuntu 22.04)** and **ROS 2 Jazzy (Ubuntu 24.04)**.
 ## Step-by-Step Instructions
 
 ### Step 1: Install Required System Dependencies
@@ -11,16 +10,24 @@ The pipeline is tested and guaranteed to work on **Ubuntu 24.04** with **ROS 2 J
 First, ensure that the system has the tools to read MCAP bag files. Open a terminal and run:
 
 ```bash
+# If using ROS 2 Humble:
+sudo apt install ros-humble-rosbag2-storage-mcap -y
+
+# If using ROS 2 Jazzy:
 sudo apt install ros-jazzy-rosbag2-storage-mcap -y
 ```
 
-> **What this does:** This installs the backend storage plugin needed by ROS 2 to read `.mcap` files properly. It may already be installed on a full ROS 2 Jazzy setup, but this ensures it is present.
+> **What this does:** This installs the backend storage plugin needed by ROS 2 to read `.mcap` files properly. It may already be installed on a full ROS 2 setup, but this ensures it is present.
 
 ### Step 2: Initialize the ROS 2 Environment
 
 Before running any ROS 2 commands, the environment variables must be loaded:
 
 ```bash
+# If using ROS 2 Humble:
+source /opt/ros/humble/setup.bash
+
+# If using ROS 2 Jazzy:
 source /opt/ros/jazzy/setup.bash
 ```
 

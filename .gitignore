@@ -7,3 +7,4 @@ test_output/
 __pycache__/
 *.pyc
 *.csv
+vlutters_confirmation_letter.txt
